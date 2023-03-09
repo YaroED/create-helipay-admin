@@ -1,6 +1,6 @@
 {
   "name": "create-helipay-admin",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "An easy way to start a Helipay's Vue project For PC user",
   "type": "module",
   "bin": {
