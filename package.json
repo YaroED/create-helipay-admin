@@ -1,6 +1,6 @@
 {
   "name": "create-helipay-admin",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "An easy way to start a Helipay's Vue project For PC user",
   "type": "module",
   "bin": {
@@ -14,7 +14,9 @@
     "node": "^14.18.0 || >=16.0.0"
   },
   "scripts": {
-    "build": "zx ./scripts/build.mjs"
+    "format": "prettier --write .",
+    "build": "zx ./scripts/build.mjs",
+    "prepublishOnly": "zx ./scripts/prepublish.mjs"
   },
   "author": "Yaro <852373851@qq.com>",
   "license": "ISC",
@@ -26,6 +28,7 @@
     "@vue/tsconfig": "^0.1.3",
     "esbuild": "^0.16.14",
     "esbuild-plugin-license": "^1.2.2",
+    "gradient-string": "^2.0.2",
     "husky": "^8.0.3",
     "kolorist": "^1.7.0",
     "lint-staged": "^13.1.2",

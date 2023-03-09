@@ -43,15 +43,15 @@ flagCombinations.push(['default'])
 
 // Filter out combinations that are not allowed
 flagCombinations = flagCombinations.filter(
-  (combination) =>
-    !featureFlagsDenylist.some((denylist) => denylist.every((flag) => combination.includes(flag)))
+  combination =>
+    !featureFlagsDenylist.some(denylist => denylist.every(flag => combination.includes(flag)))
 )
 
 // `--with-tests` are equivalent of `--vitest --cypress`
 // Previously it means `--cypress` without `--vitest`.
 // Here we generate the snapshots only for the sake of easier comparison with older templates.
 // They may be removed in later releases.
-const withTestsFlags = fullCombination(['typescript', 'jsx', 'router', 'pinia']).map((args) => [
+const withTestsFlags = fullCombination(['typescript', 'jsx', 'router', 'pinia']).map(args => [
   ...args,
   'with-tests'
 ])
@@ -70,5 +70,5 @@ for (const flags of flagCombinations) {
   await $`rm -rf ${projectName}`
 
   console.log(`Creating project ${projectName}`)
-  await $`node ${[bin, projectName, ...flags.map((flag) => `--${flag}`), '--force']}`
+  await $`node ${[bin, projectName, ...flags.map(flag => `--${flag}`), '--force']}`
 }

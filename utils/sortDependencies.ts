@@ -9,7 +9,7 @@ export default function sortDependencies(packageJson) {
 
       Object.keys(packageJson[depType])
         .sort()
-        .forEach((name) => {
+        .forEach(name => {
           sorted[depType][name] = packageJson[depType][name]
         })
     }

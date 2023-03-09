@@ -7,10 +7,10 @@ import createVitePlugins from './vite/plugins'
  * @description-cn vite官网
  * https://vitejs.cn/config/ */
 export default ({ mode, command }: ConfigEnv): UserConfigExport => {
-  const env = loadEnv(mode, process.cwd())
+  const env = loadEnv(mode, __dirname)
   const { VITE_APP_ENV } = env
   return {
-    base: '/online-customer/',
+    base: env.VITE_BASE_URL,
     resolve: {
       alias: {
         '@': resolve(__dirname, '.', 'src'),
@@ -23,11 +23,12 @@ export default ({ mode, command }: ConfigEnv): UserConfigExport => {
       host: '0.0.0.0',
       open: true,
       proxy: {
-        // 代理配置
+        // 开发环境代理配置
         '/dev-api': {
           // QA环境对外的域名
           target: 'http://xxx.com',
           changeOrigin: true,
+          // customer-api为后端api二级路径，根据实际后端接口变更
           rewrite: p => p.replace(/^\/dev-api/, '/customer-api/')
         }
       }
